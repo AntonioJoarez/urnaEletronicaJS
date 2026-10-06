@@ -82,12 +82,12 @@ function removerCandidato(numero) {
 
 // ---- Votação
 
-const inputVoto = document.getElementById("numeroVoto");
+const inputVoto = document.getElementById("numerovoto");
 const previa = document.getElementById("previa");
 const telaFim = document.getElementById("fim");
 const urna = document.getElementById(".urna");
 
-inputVoto.addEventListener("input", function (){ 
+inputVoto.addEventListener("input", function () { 
     inputVoto.value = inputVoto.value.replace(/\D/g, "");
     atualizarPrevia();
 });
@@ -143,14 +143,14 @@ function atualizarPrevia() {
     function mostrarFim() {
         urna.style.previa = "none";
         telaFim.style.display = "block";
-    }
+
 
     setTimeout(function () {
         telaFim.style.display = "none";
         urna.style.display = "block";
         limpaUrna();
     }, 2000);
-
+}
 // ----- Resultado
 function mostrarResultado() {
     const candidatos = carregarCandidatos();
@@ -183,7 +183,7 @@ function mostrarResultado() {
     });
 }
 
-document.get("btnZerar").addEventListener("click", function () {
+document.getElementById("btnZerar").addEventListener("click", function () {
     if (confirm("Tem certeza que deseha pagar TODOS os votos?")) {
         localStorage.removeItem("votos");
         mostrarResultado();
