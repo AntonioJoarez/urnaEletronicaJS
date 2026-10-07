@@ -2,11 +2,17 @@
 
 function carregarCandidatos() {
     const dados = localStorage.getItem("candidatos");
-    return dados ? JSON.parse(dados) : []
+    return dados ? JSON.parse(dados) : [];
 }
 
 function salvarCandidatos(candidatos) {
     localStorage.setItem("candidatos", JSON.stringify(candidatos));
+}
+
+function carregarVotos() {
+    const dados = localStorage.getItem("votos");
+    return dados ? JSON.parse(dados) : {};
+
 }
 
 function salvarVotos(votos) {
@@ -38,8 +44,8 @@ const listaCandidatos = document.getElementById("listaCandidatos");
 formCandidato.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
-    const nome = document.getElementById("nomeCandidato").ariaValueMax.trim();
-    const numero = document.getElementById("numeroCandidato").ariaValueMax.trim();
+    const nome = document.getElementById("nomeCandidato").value.trim();
+    const numero = document.getElementById("numeroCandidato").value.trim();
 
     const candidatos = carregarCandidatos();
 
@@ -85,7 +91,7 @@ function removerCandidato(numero) {
 const inputVoto = document.getElementById("numerovoto");
 const previa = document.getElementById("previa");
 const telaFim = document.getElementById("fim");
-const urna = document.getElementById(".urna");
+const urna = document.querySelector(".urna");
 
 inputVoto.addEventListener("input", function () { 
     inputVoto.value = inputVoto.value.replace(/\D/g, "");
